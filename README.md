@@ -33,10 +33,12 @@ The .NET Eikon Data APIs depend on the following libraries.
 > * Newtonsoft.Json (>=11.0.1)
 > * Microsoft.Extensions.Logging (>=1.1.2)
 > * Deedle (>=1.2.5)
+
 **.NET Framework 4.6, 4.6.1**
 > * Newtonsoft.Json (>=11.0.1)
 > * Microsoft.Extensions.Logging (>=2.0.1)
 > * Deedle (>=1.2.5)
+
 **.NET Standard 2.0**
 > * Newtonsoft.Json (>=11.0.1)
 > * Microsoft.Extensions.Logging (>=2.0.1)
