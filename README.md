@@ -121,18 +121,23 @@ You can use **GetData()** methods to retrieve fundamental and reference data. Th
 The following code retrieves fundamental data - Revenue and Gross Profit - for Google, Microsoft and Facebook.
 
 ```csharp
+List<string> instruments = new List<string> {
+   "GOOG.O",
+   "MSFT.O",
+   "FB.O"
+};
+
+List<string> fields = new List<string> {
+    "TR.Revenue",
+    "TR.GrossProfit"
+};              
+
 var data = eikon.GetData(
-    new List<string> {    //a list of instruments to request
-        "GOOG.O",
-        "MSFT.O",
-        "FB.O" 
-        }, 
-    new List<string> {    //a list of fields
-        "TR.Revenue",
-        "TR.GrossProfit" 
-        }
+    instruments,
+    fields
     );
-data.Print();              //print Deedle frame
+
+data.Print(); //print Deedle frame
 ```
 The output is:
 ```
@@ -143,28 +148,35 @@ The output is:
 ```
 You can specify additional parameters and request full year revenue and gross profit for the last two years scaled to millions and converted to Euros.
 ```csharp
+List<string> instruments = new List<string> {
+    "GOOG.O",
+    "MSFT.O",
+    "FB.O",
+    "AMZN.O",
+    "TWTR.K"
+};
+
+List<string> fields = new List<string> {
+    "TR.Revenue.date",
+    "TR.Revenue",
+    "TR.GrossProfit"
+};
+
+Dictionary<string, string> parameters = new Dictionary<string, string> {
+    { "Scale", "6" },
+    { "SDate", "0" },
+    { "EDate","-2"},
+    { "FRQ","FY" },
+    { "Curn","EUR" }
+};
+
 var data = eikon.GetData(
-    new List<string> {               //a list of instruments to request
-        "GOOG.O", 
-        "MSFT.O", 
-        "FB.O", 
-        "AMZN.O", 
-        "TWTR.K" 
-        },
-    new List<string> {                //a list of fields
-        "TR.Revenue.date", 
-        "TR.Revenue", 
-        "TR.GrossProfit" 
-        },
-    new Dictionary<string, string> {  //parameters
-        { "Scale", "6" },
-        { "SDate", "0" },
-        { "EDate","-2"},
-        {"FRQ","FY" },
-        {"Curn","EUR" }
-        }
+    instruments,
+    fields,
+    parameters
     );
-data.Print();                         //print Deedle frame
+
+data.Print();         //print Deedle frame
 ```
 The output is:
 ```
@@ -209,6 +221,7 @@ var data = eikon.GetTimeSeries(
     new DateTime(2018, 1, 1),  //starting date of the historical range
     new DateTime(2018, 1, 10)  //end date of the historical range
     );
+
 data.Print();                  //print Deedle frame
 ```
 The output is:
@@ -243,6 +256,7 @@ var news = eikon.GetNewsHeadlines(
     "2017-04-05T09:00:00Z",  //Beginning of date range
     "2017-04-05T18:00:00Z"   //End of date range
     );
+
 news.Print();                //print Deedle frame
 
 ```
@@ -275,6 +289,7 @@ var headlines = eikon.GetNewsHeadlines(
     "2017-04-05T09:00:00Z", //Beginning of date range
     "2017-04-05T18:00:00Z"  //End of date range
     );
+
 string storyId = headlines.GetColumn<string>("StoryId").FirstValue(); //Get the StoryId of the first headline
     
 Console.WriteLine(eikon.GetNewsStory(storyId));     //get and print story text
@@ -300,18 +315,23 @@ You can call **GetSymbology()** methods to get a list of instrument names conver
 The following code converts RICs to ISINs and tickers and returns only best match.
 
 ```csharp
+List<string> instruments = new List<string> {
+    "MSFT.O",
+    "GOOG.O",
+    "IBM.N"
+};
+
+List<SymbologyType> toSymbolType = new List<SymbologyType> {
+    SymbologyType.ticker,
+    SymbologyType.ISIN
+};
+
 var responseSymbol = eikon.GetSymbology(
-    new List<string> {        //list of instruments to convert
-        "MSFT.O", 
-        "GOOG.O", 
-        "IBM.N" 
-        },
-    SymbologyType.RIC,        //instrument code to convert from
-    new List<SymbologyType> { //a list of instrument code to convert to
-        SymbologyType.ticker, 
-        SymbologyType.ISIN
-        }
+    instruments,
+    SymbologyType.RIC, 
+    toSymbolType
     );
+
 responseSymbol.Print();       //print Deedle frame
 ```
 The output is:
