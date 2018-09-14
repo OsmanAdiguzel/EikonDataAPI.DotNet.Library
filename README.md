@@ -260,7 +260,7 @@ var news = eikon.GetNewsHeadlines(
 news.Print();                //print Deedle frame
 
 ```
-The ouput is:
+The output is:
 
 ```
      FirstCreated         VersionCreated       Text        StoryId          SourceCode
