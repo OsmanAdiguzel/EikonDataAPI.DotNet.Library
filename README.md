@@ -10,6 +10,8 @@ The APIs provide access to the following content sets:
 
 This document will explain how to install and use .NET libraries for Eikon Data APIs.
 
+Note: This library is open source, community owned and not officially supported by Thomson Reuters.
+
 ## Installation
 The .NET Eikon Data APIs are 64-bit libraries which target the following .NET frameworks: .NET 4.5, .NET 4.5.1. .NET 4.5.2, .NET 4.6, .NET 4.6.1, and .NET Standard 2.0. It is available in [NuGet](https://www.nuget.org/packages/EikonDataAPI/). It can be installed by using the following commands.
 
