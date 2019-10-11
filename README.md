@@ -1,5 +1,5 @@
 # .NET Libraries for Eikon Data APIs Quick Start
-The Eikon Data APIs provide simple access to users who require programmatic access to Thomson Reuters data on the desktop. These APIs are intended for Eikon users.
+The Eikon Data APIs provide simple access to users who require programmatic access to Refinitiv data on the desktop. These APIs are intended for Eikon users.
 
 The APIs provide access to the following content sets:
 
@@ -10,7 +10,7 @@ The APIs provide access to the following content sets:
 
 This document will explain how to install and use .NET libraries for Eikon Data APIs.
 
-Note: This library is open source, community owned and not officially supported by Thomson Reuters.
+Note: This library is open source, community owned and not officially supported by Refinitiv.
 
 ## Installation
 The .NET Eikon Data APIs are 64-bit libraries which target the following .NET frameworks: .NET 4.5, .NET 4.5.1. .NET 4.5.2, .NET 4.6, .NET 4.6.1, and .NET Standard 2.0. It is available in [NuGet](https://www.nuget.org/packages/EikonDataAPI/). It can be installed by using the following commands.
@@ -50,7 +50,7 @@ _Note: Eikon Data APIs for .NET Standard 2.0 only support raw interfaces which r
 ## Usage
 After installing **EikonDataAPI**, the application can use the API by calling the **Eikon.CreateDataAPI()** static method to create an **Eikon** interface. This interface is an access point to all functionalities in Eikon Data APIs.
 
-Then, the first method that must be called with the Eikon interface is **Eikon.SetAppKey()**. This method accepts one string argument that represents the application ID. The application ID identifies your application on Thomson Reuters Platform. You can get an application ID using the Application ID generator. For more information, please refer to [the Quick Start guide](https://developers.thomsonreuters.com/eikon-data-apis/quick-start).
+Then, the first method that must be called with the Eikon interface is **Eikon.SetAppKey()**. This method accepts one string argument that represents the application ID. The application ID identifies your application on Refinitiv Platform. You can get an application ID using the Application ID generator. For more information, please refer to [the Quick Start guide](https://developers.refinitiv.com/eikon-data-apis/quick-start).
 
 ```csharp
 using EikonDataAPI;
